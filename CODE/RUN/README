@@ -1,9 +1,9 @@
 Here you'll find 5 input file
 
-bgk.A.input	--> infinite cylinder
-bgk.B.input	--> infinite cylinder with ridges
-bgk.C.input	--> infinite network structure
-bgk.D.input	--> infinite network structure with ridges
+bgk.A.input	--> Cylinder
+bgk.B.input	--> Cylinder with Ridges
+bgk.C.input	--> Reticular Sponge
+bgk.D.input	--> Euplectella Aspergillum (periodic)
 bgk.S.input	--> full sponge simulation
 
 For every geometry 5 differente Re numbers was simulated, varing, as you can see in the input files only
