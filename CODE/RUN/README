@@ -20,3 +20,6 @@ The Re=2000 sumulation use the Re=1500 dump as initial condition,
 We use 1'000'000 timestep to "thermalize" the simulation, data are collected 
 via a further run of 200'000 with all statistics
 
+For the various geometries (except that of the cylinder, which is directly reconstructed within the code), please 
+contact  giacomo.falcucci@uniroma2.it  : each file is approximately 1Gb, while the full sponge is 1.5 Gb.
+
