@@ -10,4 +10,4 @@ For too large datasets, the complete code with the initial and boundary conditio
 
 For the geometry files, please contact giacomo.falcucci@uniroma2.it .
 
-The CPU version of the code requires gnu Fortran compiler with openMPI flag; the GPU version runs on nVidia accelerators and requires CUDA compilers. 
+The CPU version of the code requires gnu Fortran compiler with openMPI flag; the GPU version runs on nVidia accelerators and requires CUDA (PGI) compilers. 
