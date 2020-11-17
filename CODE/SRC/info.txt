@@ -1,0 +1,4 @@
+The code is allo writtent in (legacy) fortran90, unless some routine, like the one that check memory occupation. 
+
+Old stuff or buggy codes are stored in OLD_STUFF directory
+
