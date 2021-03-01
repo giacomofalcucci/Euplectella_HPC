@@ -1,0 +1,116 @@
+%%%%\documentclass{article}
+%%%%\usepackage{pgfplots}
+%%%%\pgfplotsset{compat=1.12}
+%%%%\usepgfplotslibrary{fillbetween}
+%%%%\begin{document}
+%%%%   \begin{tikzpicture}
+%%%%  \begin{axis}[
+%%%%    xlabel=Strike Price (K),
+%%%%    ylabel={Put Value (p)}
+%%%%  ] 
+  
+\documentclass[tikz,svgnames,18pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{plotmarks}
+\usepackage{amsmath}
+%\usepackage{times}
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+\usepgfplotslibrary{fillbetween}
+
+\usepackage{sansmath} % sans serif math
+\sansmath
+
+\begin{document}
+\begin{tikzpicture} [font = \Large]
+
+\def \xdim {95mm}
+\def \ydim {37.5mm}  
+  
+\begin{axis}[%
+width=\xdim,
+height=\ydim,
+scale only axis,
+xmin=0.99,
+xmax=1.00,
+%xmajorgrids,
+ymin=-0.11,
+ymax=0.055,
+xtick = {0.99,0.995,1.0},
+ytick = {-0.11,-0.055,0.0,0.055},
+yticklabels = {-10,-5,0,5},
+%yticklabels = {-5,0,5,10},
+%-2.0e-4,-1.0e-4,0.0,1.0e-4,2.0e-4,...,7.0e-4
+xticklabels= {0.99, ,1.00},
+%xticklabels= { },
+ylabel={$u_z$  [$\times \ 10^{-2}$ m/s]},
+xlabel = {Time [s]},  %\empty,
+%xlabel = { },
+xticklabels= {1178,1184,1190},
+% axis x line*=bottom,
+% axis y line*=left,
+% legend style={draw=black,fill=white,legend cell align=left}
+%legend pos = outer south east, %south east,
+legend style={at={(0.96,-0.4)}, anchor=north west},
+legend image post style={xscale=1.5},
+%title = {(a) $h = 25$ cm ; $m = m_0$},
+name = a,
+xticklabel style={yshift=-5pt},
+] 
+   %% the straight line
+   \addplot[no marks,
+   			darkgray,dashed,
+   			line width=1.5]
+%   		    file[x=column 1,y=column 2]{Average_Helicity_channel_axis.dat};
+    		table[x index=0,y index=4]{u_cylinder_OK.dat};
+   \addlegendentry{S1} 
+
+   \addplot[no marks,
+   			cyan!80!white,dash dot,
+   			line width=1.5]
+%   		    file[x=column 1,y=column 2]{Average_Helicity_channel_axis.dat};
+    		table[x index=0,y index=4]{u_cilindro-costole_OK.dat};
+   \addlegendentry{S2} 
+
+    \addplot[no marks,
+			green!80!black,dash dot dot,   			
+   			%pink!50!orange,dash dot dot,
+   			line width=2] 
+   			table[x index=0,y index=4]{u_spugna-reticolare_OK.dat};
+   \addlegendentry{P1}
+
+    \addplot[no marks,
+%   			lime!80!green,smooth,
+   			purple!80!violet,smooth,
+   			line width=1.5,
+   			name path=A] 
+   			table[x index=0,y index=2]{u_z_w_HALO_various_Marks.dat};
+   \addlegendentry{P2}
+%%   %% the upper curve 
+\addplot[no marks,
+   			red!20,smooth,
+   			line width=0.5,
+   			name path=B, forget plot] 
+   			table[x index=0,y index=1]{u_z_w_HALO_various_Marks.dat};
+   \addlegendentry{ }
+% lower curve
+  \addplot[no marks,
+   			red!20,smooth,
+   			line width=0.5,
+   			name path=C, forget plot] 
+   			table[x index=0,y index=3]{u_z_w_HALO_various_Marks.dat};
+   \addlegendentry{ } 
+%
+%
+   %% filling
+   \addplot[red!20,forget plot] fill between[of=B and C];
+
+  \end{axis}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  
+\end{tikzpicture}
+\end{document}
