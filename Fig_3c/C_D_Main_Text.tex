@@ -1,0 +1,189 @@
+% This file was created by matlab2tikz v0.4.4 running on MATLAB 8.1.
+% Copyright (c) 2008--2013, Nico Schlömer <nico.schloemer@gmail.com>
+% All rights reserved.
+% 
+% The latest updates can be retrieved from
+%   http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz
+% where you can also make suggestions and rate matlab2tikz.
+% 
+\documentclass[tikz,svgnames,18pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{plotmarks}
+\usepackage{amsmath}
+%\usepackage{times}
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+
+\usepackage{sansmath} % sans serif math
+\sansmath
+
+\begin{document}
+\begin{tikzpicture}[font = \normal]
+
+\def \xdim {115mm}
+\def \ydim {55mm}
+
+
+\begin{loglogaxis}[%
+width=\xdim,
+height=\ydim,
+scale only axis,
+xmin=10,
+xmax=10000,
+xmajorgrids,
+ymin=0.8,
+ymax=4.0,
+ytick = {0.6,0.6,0.8,1,2,3,4,4},
+yticklabels = {0.6,0.6,0.8,1.0,2.0,3.0,4.0,4.0},
+xticklabels= {10,100,1000,10000,10000},
+ylabel={$C_D$},
+xlabel = {$\mathrm{Re}$},  %\empty,
+ymajorgrids,
+% axis x line*=bottom,
+% axis y line*=left,
+% legend style={draw=black,fill=white,legend cell align=left}
+legend pos = outer north east, %south east,
+%title = {(a) $h = 25$ cm ; $m = m_0$},
+name = a,
+%        at=(a.right of south east),
+%        anchor=left of south west,
+]
+%\input{25cm+0.tex}
+
+
+
+\addplot[
+   color=Magenta,% DarkGreen,
+   only marks,
+   mark = triangle,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Kawamura_1986.csv};
+\addlegendentry{Kawamura, 1986}
+
+
+\addplot[
+   color= cyan!80!white, %ForestGreen,% DarkGreen,
+   only marks,
+   mark = pentagon,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Henderson_data_from_Sahin.csv};
+\addlegendentry{Henderson, 1995}
+
+\addplot[
+   color= darkgray, %ForestGreen,% DarkGreen,
+   only marks,
+   mark = o,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Posdziech_Grundmann_data_from_Shain.csv};
+\addlegendentry{Posdziech \& Grundmann, 2001}
+
+\addplot[
+   color= red, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=triangle,
+   every mark/.append style={rotate=180},
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Shain_data.csv};
+\addlegendentry{Shain \& Owens, 2004}
+
+\addplot[
+   color= blue!50!white, %green!80!black, %brown!70!black, %yellow!50!orange, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=square,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Fujisawa_2005.csv};
+\addlegendentry{Fujisawa, 2005}
+
+\addplot[
+   color= violet, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=diamond,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Hanchi_1999.csv};
+\addlegendentry{Hanchi, 1999}
+
+\addplot[
+   color= red, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=*,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {C_d_S1.dat};
+\addlegendentry{ S1 }
+
+
+\addplot[
+   color= black, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=o,
+   line width=0.25,
+   mark size = 2.5,
+   forget plot
+%    dashdotted,
+   ] file {C_d_S1.dat};
+\addlegendentry{ S1 }
+
+
+
+\addplot[
+   color= blue, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=square*,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {C_d_S2.dat};
+\addlegendentry{ S2 }
+
+\addplot[
+   color=ForestGreen,% DarkGreen,
+   only marks,
+   mark=diamond*,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {C_d_P1.dat};
+   \addlegendentry{ P1 }
+
+
+\addplot[
+   color=orange, % DarkGreen,
+   only marks,
+   mark=pentagon*,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {C_d_P2.dat};
+   \addlegendentry{ P2 }
+
+%%\addplot[
+%%   color= ForestGreen,% DarkGreen,
+%%   only marks,
+%%   mark=pentagon*,
+%%   line width=1.1,
+%%   mark size = 2
+%%%    dashdotted,
+%%   ] file {C_d_P2.dat};
+%%   \addlegendentry{ P2 }
+
+
+\end{loglogaxis}
+
+
+\end{tikzpicture}%
+\end{document}

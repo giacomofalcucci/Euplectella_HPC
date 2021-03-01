@@ -1,0 +1,578 @@
+% This file was created by matlab2tikz v0.4.4 running on MATLAB 8.1.
+% Copyright (c) 2008--2013, Nico Schlömer <nico.schloemer@gmail.com>
+% All rights reserved.
+% 
+% The latest updates can be retrieved from
+%   http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz
+% where you can also make suggestions and rate matlab2tikz.
+% 
+\documentclass[tikz,svgnames,18pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{plotmarks}
+\usepackage{amsmath}
+%\usepackage{times}
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+
+\usepackage{sansmath} % sans serif math
+\sansmath
+
+\begin{document}
+\begin{tikzpicture}[font = \normal]
+
+\def \xdim {110mm}
+\def \ydim {45mm}
+
+%======================================================================
+%======================================================================
+%======================================================================
+
+\begin{axis}[%
+width=\xdim*0.7,
+height=\ydim,
+scale only axis,
+xmin=100,
+xmax=3000,
+xmajorgrids,
+ymin=0.8,
+ymax=1.8,
+%ylabel={Displacement [m]},
+ymajorgrids,
+ytick = {0.8,0.8,1.0,1.5,1.8,1.8},
+yticklabels= {0.8,0.8,1.0,1.5,1.8,1.8}, %\empty,
+xlabel = {$\mathrm{Re}$}, %\empty 
+xtick = {100,100,1000,2000,3000,3000},
+xticklabels = {100,100,1000,2000,3000,3000},
+% axis x line*=bottom,
+% axis y line*=left,
+% legend style={draw=black,fill=white,legend cell align=left}
+%title = {(b) $h = 50$ cm ; $m = m_0$},
+legend pos = outer north east,
+name = b,
+%at=(a.right of south east),
+%anchor=left of south west,
+]
+%\input{errorbars.tex}
+%\input{errorbars.tex}
+
+\addplot[
+   color=Magenta,% DarkGreen,
+   only marks,
+   mark = triangle,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Kawamura_1986.csv};
+\addlegendentry{Kawamura, 1986}
+
+
+\addplot[
+   color= cyan!80!white, %ForestGreen,% DarkGreen,
+   only marks,
+   mark = pentagon,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Henderson_data_from_Sahin.csv};
+\addlegendentry{Henderson, 1995}
+
+\addplot[
+   color= darkgray, %ForestGreen,% DarkGreen,
+   only marks,
+   mark = o,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Posdziech_Grundmann_data_from_Shain.csv};
+\addlegendentry{Posdziech \& Grundmann, 2001}
+
+\addplot[
+   color= red, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=triangle,
+   every mark/.append style={rotate=180},
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Shain_data.csv};
+\addlegendentry{Shain \& Owens, 2004}
+
+\addplot[
+   color= blue!50!white, %yellow!50!orange, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=square,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Fujisawa_2005.csv};
+\addlegendentry{Fujisawa, 2005}
+
+\addplot[
+   color= violet, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=diamond,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {Hanchi_1999.csv};
+\addlegendentry{Hanchi, 1999}
+
+\addplot[
+   color= red, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=*,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {C_d_S1.dat};
+\addlegendentry{ S1 }
+
+
+\addplot[
+   color= black, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=o,
+   line width=0.25,
+   mark size = 2.5,
+   forget plot
+%    dashdotted,
+   ] file {C_d_S1.dat};
+%\addlegendentry{ }
+
+\addplot[
+   color= blue, %ForestGreen,% DarkGreen,
+   only marks,
+   mark=square*,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {C_d_S2.dat};
+\addlegendentry{ S2 }
+
+\addplot[
+   color=ForestGreen,%ForestGreen,% DarkGreen,
+   only marks,
+   mark=diamond*,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {C_d_P1.dat};
+   \addlegendentry{ P1 }
+
+\addplot[
+   color=orange, % DarkGreen,
+   only marks,
+   mark=pentagon*,
+   line width=1.1,
+   mark size = 2
+%    dashdotted,
+   ] file {C_d_P2.dat};
+   \addlegendentry{ P2 }
+
+%\addplot[
+%   color= ForestGreen,% DarkGreen,
+%   only marks,
+%   mark=pentagon*,
+%   line width=1.1,
+%   mark size = 2
+%%    dashdotted,
+%   ] file {C_d_P2.dat};
+%   \addlegendentry{ P2 }
+
+
+\addplot [only marks, mark=pentagon*, color= orange, error bars/.cd, y explicit, y dir=both, %,
+      error bar style={line width=0.75pt,solid,color=darkgray},
+      error mark options={line width=0.75pt,mark=pentagon*,color=orange,mark size=2pt,rotate=90}]
+    coordinates{
+(100,1.5566)  += (0,0)  		-= 	(0,0.04861)
+(500,1.3111)  += (0,0.001)		-= 	(0,0.03184)         
+(1000,1.1887) += (0,0)			-=	(0,0.03399) %+= (1000,1.1887) -= (1000,1.15471)        
+(1500,1.1548) += (0,0) 		-=	(0,0.04139) %+= (1500,1.1548) -= (1500,1.11341)         
+(2000,1.1214) += (0,0.0051)    -=	(0,0.01667) %+= (2000,1.1265) -= (2000,1.10473)
+    };
+
+
+
+
+%%\addplot[
+%%   color=DarkGreen,
+%%   only marks,
+%%   mark = *,
+%%   mark size = 0.5
+%%%    dashdotted,
+%%   ] file {m0_h50_camera.dat};
+
+\end{axis}
+
+%======================================================================
+%======================================================================
+%======================================================================
+
+%%%%%\begin{axis}[%
+%%%%%width=\xdim,
+%%%%%height=\ydim,
+%%%%%scale only axis,
+%%%%%xmin=0,
+%%%%%xmax=2,
+%%%%%xmajorgrids,
+%%%%%ymin=-0.4,
+%%%%%ymax=0.1,
+%%%%%ylabel={Displacement [m]},
+%%%%%ymajorgrids,
+%%%%%ytick = {-0.4,-0.3,...,0,0.1},
+%%%%%ylabel=\empty,
+%%%%%yticklabels= \empty,
+%%%%%xticklabels= \empty,
+%%%%%% axis x line*=bottom,
+%%%%%% axis y line*=left,
+%%%%%% legend style={draw=black,fill=white,legend cell align=left}
+%%%%%title = {(c) $h = 75$ cm ; $m = m_0$},
+%%%%%name = c,
+%%%%%at=(b.right of south east),
+%%%%%anchor=left of south west,
+%%%%%]
+%%%%%\input{75cm+0.tex}
+%%%%%
+%%%%%
+%%%%%\addplot[
+%%%%%   color=DarkGreen,
+%%%%%   only marks,
+%%%%%   mark = *,
+%%%%%   mark size = 0.5
+%%%%%%    dashdotted,
+%%%%%   ] file {m0_h75_camera.dat};
+%%%%%
+%%%%%\end{axis}
+%%%%%
+%%%%%%======================================================================
+%%%%%%======================================================================
+%%%%%%======================================================================
+%%%%%
+%%%%%\begin{axis}[%
+%%%%%width=\xdim,
+%%%%%height=\ydim,
+%%%%%scale only axis,
+%%%%%xmin=0,
+%%%%%xmax=2,
+%%%%%xmajorgrids,
+%%%%%ymin=-0.4,
+%%%%%ymax=0.1,
+%%%%%ylabel={Displacement [m]},
+%%%%%xlabel = \empty,
+%%%%%ymajorgrids,
+%%%%%ytick = {-0.4,-0.3,...,0,0.1},
+%%%%%ylabel=\empty,
+%%%%%yticklabels= \empty,
+%%%%%xticklabels= \empty,
+%%%%%% axis x line*=bottom,
+%%%%%% axis y line*=left,
+%%%%%% legend style={draw=black,fill=white,legend cell align=left}
+%%%%%title = {(d) $h = 100$ cm ; $m = m_0$},
+%%%%%name = d,
+%%%%%at=(c.right of south east),
+%%%%%anchor=left of south west,
+%%%%%]
+%%%%%\input{100cm+0.tex}
+%%%%%
+%%%%%\addplot[
+%%%%%   color=DarkGreen,
+%%%%%   only marks,
+%%%%%   mark = *,
+%%%%%   mark size = 0.5
+%%%%%%    dashdotted,
+%%%%%   ] file {m0_h100_camera.dat};
+%%%%%
+%%%%%\end{axis}
+%%%%%
+%%%%%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%
+%%%%%\begin{axis}[%
+%%%%%width=\xdim,
+%%%%%height=\ydim,
+%%%%%scale only axis,
+%%%%%xmin=0,
+%%%%%xmax=2,
+%%%%%xlabel={time [s]},
+%%%%%xmajorgrids,
+%%%%%ymin=-0.4,
+%%%%%ymax=0.1,
+%%%%%ylabel={Displacement [m]},
+%%%%%ymajorgrids,
+%%%%%ytick = {-0.4,-0.3,...,0,0.1},
+%%%%%yticklabels = {-0.4,-0.3,-0.2,-0.1,0.0,0.1},
+%%%%%% axis x line*=bottom,
+%%%%%% axis y line*=left,
+%%%%%% legend style={draw=black,fill=white,legend cell align=left}
+%%%%%title = {(e) $h = 25$ cm ; $m = m_0 + 1$ kg},
+%%%%%name = e,
+%%%%%at=(a.below south west),
+%%%%%anchor=above north west,
+%%%%%]
+%%%%%\input{25cm+1.tex}
+%%%%%
+%%%%%\addplot[
+%%%%%   color=DarkGreen,
+%%%%%   only marks,
+%%%%%   mark = *,
+%%%%%   mark size = 0.5
+%%%%%%    dashdotted,
+%%%%%   ] file {m1_h25_camera.dat};
+%%%%%
+%%%%%\end{axis}
+%%%%%
+%%%%%%======================================================================
+%%%%%%======================================================================
+%%%%%%======================================================================
+%%%%%
+%%%%%\begin{axis}[%
+%%%%%width=\xdim,
+%%%%%height=\ydim,
+%%%%%scale only axis,
+%%%%%xmin=0,
+%%%%%xmax=2,
+%%%%%xlabel={time [s]},
+%%%%%xmajorgrids,
+%%%%%ymin=-0.4,
+%%%%%ymax=0.1,
+%%%%%ylabel={Displacement [m]},
+%%%%%ymajorgrids,
+%%%%%ytick = {-0.4,-0.3,...,0,0.1},
+%%%%%ylabel=\empty,
+%%%%%yticklabels= \empty,
+%%%%%% axis x line*=bottom,
+%%%%%% axis y line*=left,
+%%%%%% legend style={draw=black,fill=white,legend cell align=left}
+%%%%%title = {(f) $h = 50$ cm ; $m = m_0 + 1$ kg},
+%%%%%name = f,
+%%%%%at=(b.below south west),
+%%%%%anchor=above north west,
+%%%%%]
+%%%%%\input{50cm+1.tex}
+%%%%%
+%%%%%\addplot[
+%%%%%   color=DarkGreen,
+%%%%%   only marks,
+%%%%%   mark = *,
+%%%%%   mark size = 0.5
+%%%%%%    dashdotted,
+%%%%%   ] file {m1_h50_camera.dat};
+%%%%%
+%%%%%\end{axis}
+%%%%%
+%%%%%%======================================================================
+%%%%%%======================================================================
+%%%%%%======================================================================
+%%%%%
+%%%%%\begin{axis}[%
+%%%%%width=\xdim,
+%%%%%height=\ydim,
+%%%%%scale only axis,
+%%%%%xmin=0,
+%%%%%xmax=2,
+%%%%%xlabel={time [s]},
+%%%%%xmajorgrids,
+%%%%%ymin=-0.4,
+%%%%%ymax=0.1,
+%%%%%ylabel={Displacement [m]},
+%%%%%ymajorgrids,
+%%%%%ytick = {-0.4,-0.3,...,0,0.1},
+%%%%%ylabel=\empty,
+%%%%%yticklabels= \empty,
+%%%%%% axis x line*=bottom,
+%%%%%% axis y line*=left,
+%%%%%% legend style={draw=black,fill=white,legend cell align=left}
+%%%%%title = {(g) $h = 75$ cm ; $m = m_0 + 1$ kg},
+%%%%%name = g,
+%%%%%% at=(c.below south west),
+%%%%%% anchor=above north west,
+%%%%%at=(f.right of south east),
+%%%%%anchor=left of south west,
+%%%%%]
+%%%%%\input{75cm+1.tex}
+%%%%%
+%%%%%\addplot[
+%%%%%   color=DarkGreen,
+%%%%%   only marks,
+%%%%%   mark = *,
+%%%%%   mark size = 0.5
+%%%%%%    dashdotted,
+%%%%%   ] file {m1_h75_camera.dat};
+%%%%%
+%%%%%\end{axis}
+%%%%%
+%%%%%%======================================================================
+%%%%%%======================================================================
+%%%%%%======================================================================
+%%%%%
+%%%%%\begin{axis}[%
+%%%%%width=\xdim,
+%%%%%height=\ydim,
+%%%%%scale only axis,
+%%%%%xmin=0,
+%%%%%xmax=2,
+%%%%%xlabel={time [s]},
+%%%%%xmajorgrids,
+%%%%%ymin=-0.4,
+%%%%%ymax=0.1,
+%%%%%ylabel={Displacement [m]},
+%%%%%ymajorgrids,
+%%%%%ytick = {-0.4,-0.3,...,0,0.1},
+%%%%%ylabel=\empty,
+%%%%%yticklabels= \empty,
+%%%%%% axis x line*=bottom,
+%%%%%% axis y line*=left,
+%%%%%% legend style={draw=black,fill=white,legend cell align=left}
+%%%%%title = {(h) $h = 100$ cm ; $m = m_0 + 1$ kg},
+%%%%%name = h,
+%%%%%at=(d.below south west),
+%%%%%anchor=above north west,
+%%%%%]
+%%%%%\input{100cm+1.tex}
+%%%%%
+%%%%%\addplot[
+%%%%%   color=DarkGreen,
+%%%%%   only marks,
+%%%%%   mark = *,
+%%%%%   mark size = 0.5
+%%%%%%    dashdotted,
+%%%%%   ] file {m1_h100_camera.dat};
+%%%%%
+%%%%%\end{axis}
+%%%%%% 
+%%%%%% %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%% %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%% %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%% %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%% %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%% %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%% %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%% %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%% %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%%%%% 
+%%%%%% % \begin{axis}[%
+%%%%%% % width=\xdim,
+%%%%%% % height=\ydim,
+%%%%%% % scale only axis,
+%%%%%% % xmin=0,
+%%%%%% % xmax=2,
+%%%%%% % xlabel={time [s]},
+%%%%%% % xmajorgrids,
+%%%%%% % ymin=-0.4,
+%%%%%% % ymax=0.1,
+%%%%%% % ylabel={Displacement [m]},
+%%%%%% % ymajorgrids,
+%%%%%% % ytick = {-0.4,-0.3,...,0,0.1},
+%%%%%% % yticklabels = {-0.4,-0.3,-0.2,-0.1,0.0,0.1},
+%%%%%% % % axis x line*=bottom,
+%%%%%% % % axis y line*=left,
+%%%%%% % % legend style={draw=black,fill=white,legend cell align=left}
+%%%%%% % title = {(i) $h = 25$ cm$-M = 2$ kg},
+%%%%%% % name = i,
+%%%%%% % at=(e.below south west),
+%%%%%% % anchor=above north west,
+%%%%%% % ]
+%%%%%% % \input{25cm+2.tex}
+%%%%%% % \end{axis}
+%%%%%% % 
+%%%%%% % %======================================================================
+%%%%%% % %======================================================================
+%%%%%% % %======================================================================
+%%%%%% % 
+%%%%%% % \begin{axis}[%
+%%%%%% % width=\xdim,
+%%%%%% % height=\ydim,
+%%%%%% % scale only axis,
+%%%%%% % xmin=0,
+%%%%%% % xmax=2,
+%%%%%% % xlabel={time [s]},
+%%%%%% % xmajorgrids,
+%%%%%% % ymin=-0.4,
+%%%%%% % ymax=0.1,
+%%%%%% % ylabel={Displacement [m]},
+%%%%%% % ymajorgrids,
+%%%%%% % ytick = {-0.4,-0.3,...,0,0.1},
+%%%%%% % ylabel=\empty,
+%%%%%% % yticklabels= \empty,
+%%%%%% % % axis x line*=bottom,
+%%%%%% % % axis y line*=left,
+%%%%%% % % legend style={draw=black,fill=white,legend cell align=left}
+%%%%%% % title = {(l) $h = 50$ cm$-M = 2$ kg},
+%%%%%% % name = l,
+%%%%%% % at=(f.below south west),
+%%%%%% % anchor=above north west,
+%%%%%% % ]
+%%%%%% % \input{50cm+2.tex}
+%%%%%% % \end{axis}
+%%%%%% % 
+%%%%%% % %======================================================================
+%%%%%% % %======================================================================
+%%%%%% % %======================================================================
+%%%%%% % 
+%%%%%% % \begin{axis}[%
+%%%%%% % width=\xdim,
+%%%%%% % height=\ydim,
+%%%%%% % scale only axis,
+%%%%%% % xmin=0,
+%%%%%% % xmax=2,
+%%%%%% % xlabel={time [s]},
+%%%%%% % xmajorgrids,
+%%%%%% % ymin=-0.4,
+%%%%%% % ymax=0.1,
+%%%%%% % ylabel={Displacement [m]},
+%%%%%% % ymajorgrids,
+%%%%%% % ytick = {-0.4,-0.3,...,0,0.1},
+%%%%%% % ylabel=\empty,
+%%%%%% % yticklabels= \empty,
+%%%%%% % % axis x line*=bottom,
+%%%%%% % % axis y line*=left,
+%%%%%% % % legend style={draw=black,fill=white,legend cell align=left}
+%%%%%% % title = {(m) $h = 75$ cm$-M = 2$ kg},
+%%%%%% % name = m,
+%%%%%% % at=(g.below south west),
+%%%%%% % anchor=above north west,
+%%%%%% % ]
+%%%%%% % \input{75cm+2.tex}
+%%%%%% % \end{axis}
+%%%%%% % 
+%%%%%% % %======================================================================
+%%%%%% % %======================================================================
+%%%%%% % %======================================================================
+%%%%%% % 
+%%%%%% % \begin{axis}[%
+%%%%%% % width=\xdim,
+%%%%%% % height=\ydim,
+%%%%%% % scale only axis,
+%%%%%% % xmin=0,
+%%%%%% % xmax=2,
+%%%%%% % xlabel={time [s]},
+%%%%%% % xmajorgrids,
+%%%%%% % ymin=-0.4,
+%%%%%% % ymax=0.1,
+%%%%%% % ylabel={Displacement [m]},
+%%%%%% % ymajorgrids,
+%%%%%% % ytick = {-0.4,-0.3,...,0,0.1},
+%%%%%% % ylabel=\empty,
+%%%%%% % yticklabels= \empty,
+%%%%%% % % axis x line*=bottom,
+%%%%%% % % axis y line*=left,
+%%%%%% % % legend style={draw=black,fill=white,legend cell align=left}
+%%%%%% % title = {(n) $h = 100$ cm$-M = 2$ kg},
+%%%%%% % name = n,
+%%%%%% % at=(h.below south west),
+%%%%%% % anchor=above north west,
+%%%%%% % ]
+%%%%%% % \input{100cm+2.tex}
+%%%%%% % \end{axis}
+
+\end{tikzpicture}%
+\end{document}
