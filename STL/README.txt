@@ -4,3 +4,10 @@ Please, find the .dat geometries: these files correspond to the stl processed
 as described in the Methods Section.
 
 The geometry of the plain cylinder (S1) is not shared, as it is directly reconstructed in the LBM code. 
+
+
+To visualize the geometries:
+- unzip the dat file
+- open gnuplot and plot
+  splot 'name_of_the_geo' u 1:2:3
+  
